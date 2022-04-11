@@ -25,11 +25,6 @@ jobs:
         
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      
-      - name: Super-Linter
-      uses: github/super-linter@v4.9.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -41,3 +36,13 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
+  lint:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    -uses: actions/checkout@v3
+    - name: Super-Linter
+    uses: github/super-linter@v4.9.2
+    env: 
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
